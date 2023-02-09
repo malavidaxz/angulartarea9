@@ -1,0 +1,32 @@
+<form>
+    <section class="row mb-3">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Ingrese el primer valor</label>
+      <section class="col-sm-2">
+        <input type="number" class="form-control" id="" name="valor1" [(ngModel)]="valor1">
+      </section>
+    </section>
+    <section class="row mb-3">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Ingrese el segundo valor</label>
+      <section class="col-sm-2">
+        <input type="number" class="form-control" id="" name="valor2" [(ngModel)]="valor2">
+      </section>
+    </section>
+    <fieldset class="row mb-3">
+        <section class="col-sm-2" >
+            <select name="op" id="" [(ngModel)]="operacion" (change)="operaciones(operacion)">
+                <option value="ninguna">Elija una opción</option>
+                <option value="+">Sumar</option>
+                <option value="-">Restar</option>
+                <option value="*">Multiplicar</option>
+                <option value="/">Dividir</option>
+            </select>
+        </section> 
+        <section [ngSwitch]="operacion" >
+          <p [ngStyle]="{'color':'blue'}" *ngSwitchCase="'+'">Resultado: {{resultado}}</p>
+          <p [ngStyle]="{'color':'#7a16af'}" *ngSwitchCase="'-'">Resultado: {{resultado}}</p>
+          <p [ngStyle]="{'color':'green'}" *ngSwitchCase="'*'">Resultado: {{resultado}}</p>
+          <p [ngStyle]="{'color':'orange'}" *ngSwitchCase="'/'">Resultado: {{resultado}}</p>
+          <p [ngStyle]="{'color':'red'}" *ngSwitchDefault>(No eligió operación)</p>
+        </section>
+      </fieldset>
+  </form>
